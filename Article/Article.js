@@ -121,4 +121,15 @@ createArticle = article =>{
   const p2 = document.createElement('p');
   const p3 = document.createElement('p');
   const span = document.createElement('span');
+
+  div.classList.add('article');
+  p3.classList.add('date');
+  span.classList.add('expandButton');
+
+  header.textContent = article.title;
+  date.textContent = article.date;
+  p3.textContent = article.firstParagraph;
+  p3.textContent = article.secondParagraph;
+  p3.textContent = article.thirdParagraph;
+  span.textContent = 'Open Article';
 }
