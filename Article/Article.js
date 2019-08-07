@@ -117,9 +117,7 @@ window.addEventListener('load', (e)=> {
     const paragraph2 = document.createElement('p');
     const paragraph3 = document.createElement('p');
     const buttonExpanded = document.createElement('span');
-    const buttonCollapsed = document.createElement('span');
-  
-  
+    
   //set up structure of elements
     article.appendChild(title);
     article.appendChild(date);
