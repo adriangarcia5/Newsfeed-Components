@@ -117,8 +117,6 @@ createArticle = article =>{
   const div = document.createElement('div');
   const header = document.createElement('h2');
   const date = document.createElement('p');
-  const p1 = document.createElement('p');
-  const p2 = document.createElement('p');
   const p3 = document.createElement('p');
   const span = document.createElement('span');
 
@@ -132,4 +130,5 @@ createArticle = article =>{
   p3.textContent = article.secondParagraph;
   p3.textContent = article.thirdParagraph;
   span.textContent = 'Open Article';
+  div.append(header,date, p3, span);
 }
