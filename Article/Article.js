@@ -93,87 +93,89 @@ window.addEventListener('load', (e)=> {
   
   
   
-  //  Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-    
-  //   <div class="article">
-  //     <h2>{title of the article}</h2>
-  //     <p class="date">{date of the article}</p>
+ //  Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
-  //     {three separate paragraph elements}
-  
-  //     <span class='expandButton'></span>
-  //   </div>
-  
-    // Hint: You will need to use createElement more than once here!
-  
-    // Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
-  
-  //define new elements
-  function createArticle(t,d,p1,p2,p3, btn) {
-    const article = document.createElement('div');
-    const title = document.createElement('h2');
-    const date = document.createElement('p');
-    const paragraph1 = document.createElement('p');
-    const paragraph2 = document.createElement('p');
-    const paragraph3 = document.createElement('p');
-    const buttonExpanded = document.createElement('span');
-    
-  //set up structure of elements
-    article.appendChild(title);
-    article.appendChild(date);
-    article.appendChild(paragraph1);
-    article.appendChild(paragraph2);
-    article.appendChild(paragraph3);
-    article.appendChild(buttonExpanded);
-  
-  //set class names
-  
-    article.classList.add('article');
-    title.classList.add('title');
-    date.classList.add('date');
-    paragraph1.classList.add('paragraph-1');
-    paragraph2.classList.add('paragraph-2');
-    paragraph3.classList.add('paragraph-3');
-    buttonExpanded.classList.add('expand-buttons');
-    
-    const open = '\u25bc';
-    const close = '\u25b2';
-    
-    //set text content
-    title.textContent = t;
-    date.textContent = d;
-    paragraph1.textContent = p1;
-    paragraph2.textContent = p2;
-    paragraph3.textContent = p3;
-    buttonExpanded.textContent = open;
-    
-    return article;
-  }
-    // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-      //  article.addEventListener('click', event => {
-      //     console.log('button clicked', event.target);
-      //     buttonOpen.classList.toggle('hide-btn');
-      //     buttonClose.classList.toggle('hide-btn');
-      //   });
+//   <div class="article">
+//     <h2>{title of the article}</h2>
+//     <p class="date">{date of the article}</p>
 
-    // Step 3: return the entire component.
-      //  console.log(createArticle);
+//     {three separate paragraph elements}
 
-    // Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-    const articles = document.querySelector('.articles');
-  
-    data.forEach(data => {
-      console.log('creating article:', data.title)
-      articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
-    });
+//     <span class='expandButton'></span>
+//   </div>
 
+  // Hint: You will need to use createElement more than once here!
+  const articles = document.querySelector('.articles');
+  data.forEach(data => {
+    console.log('creating article:', data.title)
+    articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+  });
 
-    // Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
-    
-    const articleDiv = document.querySelector('.articles');
+  // Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
+function createArticle(t,d,p3) {
+//define new elements
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const paragraph1 = document.createElement('p');
+  const paragraph2 = document.createElement('p');
+  const paragraph3 = document.createElement('p');
+  const buttonExpand = document.createElement('span');
+ 
 
-    data.forEach(articles => {
-      articleDiv.append(createArticle(articles));
-    })
-  
+//set up structure of elements
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(paragraph1);
+  article.appendChild(paragraph2);
+  article.appendChild(paragraph3);
+  article.appendChild(buttonExpand);
+
+//set class names
+
+article.classList.add('article', 'article-open', 'close');
+title.classList.add('title');
+date.classList.add('date');
+paragraph3.classList.add('paragraph-1');
+paragraph3.classList.add('paragraph-2');
+paragraph3.classList.add('paragraph-3');
+buttonExpand.classList.add('expandButton');
+
+const open = '\u25bc';
+
+//set text content
+title.textContent = t;
+date.textContent = d;
+paragraph3.textContent = p3;
+paragraph3.textContent = p3;
+paragraph3.textContent = p3;
+buttonExpand.textContent = open;
+
+  // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  buttonExpand.addEventListener('click', (e) => {
+    article.classList.toggle('article-open');
   })
+
+  // Step 3: return the entire component.
+//return article
+
+return article; 
+}
+
+// Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  function createAuthor(author){
+    const auth = document.createElement('h6');
+    auth.textContent = author;
+    return auth;
+}
+
+// Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
+
+  let arts = Array.from(document.querySelectorAll(".article"));
+  console.log(arts)
+
+  for(i=0; i < arts.length; i++){
+  arts[i].prepend(createAuthor("Adrian Garcia"));
+  }
+
+})
